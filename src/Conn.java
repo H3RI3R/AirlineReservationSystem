@@ -1,63 +1,50 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Conn {
 
-          public Connection con;
-          public  Statement statement;
-          Conn()
-        {
-            try
-              {
-               Class.forName("com.mysql.cj.jdbc.Driver");
-               con= DriverManager.getConnection("jdbc:mysql://localhost:3306/AMS","root","sangam_123");
-               System.out.println("connection success");
-               createUserSignIn();
+    public static Connection con;
+    public static  Statement statement;
+     public static PreparedStatement psmt;
 
+   public static  Connection Conn()
+   {
+        try {
 
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/AMS", "root", "sangam_123");
 
-
-              }
-              catch (Exception e)
-              {
-                  e.printStackTrace();
-
-              }
-        }
-        public void createUserSignIn()
-        {
-            try {
-                String sql = "Create table IF NOT EXISTS signIn(username varchar(20) NOT NULL,password varchar(20) NOT NULL)";
-                statement = con.createStatement();
-                statement.execute(sql);
-                System.out.println("table created");
-
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
 
         }
-        public void createAdimSignIn()
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+       return con;
+   }
+
+    public static void User_Ams_Main() {
+        try {
+            String sql = "create table  if not exists AMS_main(user_id int auto_increment primary key," +
+                    "full_name varchar(100) not null," +
+                    "email varchar(100) not null unique," +
+                    "username varchar(100) not null unique," +
+                    "password varchar(100) not null," +
+                    "phoneNo varchar(100) not null," +
+                    "role enum('admin','user') default 'user'," +
+                    "is_active boolean default TRUE);";
+            statement = con.createStatement();
+            statement.executeUpdate(sql);
+
+            // statement.close();
+
+       }
+        catch (Exception e)
         {
-            try
-            {
-              String sql="";
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }
-
-
-
+            e.printStackTrace();
         }
 
 
 
+    }
 
 }
