@@ -5,7 +5,7 @@ public class Conn {
 
     public static Connection con;
     public static  Statement statement;
-     public static PreparedStatement psmt;
+    public static PreparedStatement psmt;
 
    public static  Connection Conn()
    {

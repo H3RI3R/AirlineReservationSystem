@@ -46,6 +46,7 @@ public class Main
                  {
                      case 1:
                          System.out.println("you are in user registration panel");
+                         Registration.recordRegister();
                          break;
                      case 2:
                          System.out.println("you are in user login panel'");
@@ -60,4 +61,8 @@ public class Main
 
         }
      }
+
+
+
+
  }
