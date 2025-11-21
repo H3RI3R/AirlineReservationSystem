@@ -27,7 +27,7 @@ public class Main
                 {
                     case 1:
                         System.out.println("you are in admin registration");
-                         Registration.recordRegister();
+                         Registration.adminRecordRegister();
                         break;
 
                     case 2:
@@ -46,7 +46,7 @@ public class Main
                  {
                      case 1:
                          System.out.println("you are in user registration panel");
-                         Registration.recordRegister();
+                         Registration.userRecordRegister();
                          break;
                      case 2:
                          System.out.println("you are in user login panel'");
