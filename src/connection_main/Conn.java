@@ -1,3 +1,4 @@
+package connection_main;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -7,12 +8,12 @@ public class Conn {
     public static  Statement statement;
     public static PreparedStatement psmt;
 
-   public static  Connection Conn()
+   public static  Connection getConnection()
    {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/AMS", "root", "sangam_123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ARS", "root", "Ishwar@777");
 
 
         }
@@ -46,5 +47,6 @@ public class Conn {
 
 
     }
+
 
 }

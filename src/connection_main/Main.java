@@ -1,5 +1,7 @@
-import java.sql.Connection;
+package connection_main;
 import java.util.Scanner;
+
+import files_package.Registration;
 public class Main
 {
 
@@ -7,7 +9,7 @@ public class Main
    public static   Scanner sc = new Scanner(System.in);
     public static void main(String[]args)
     {
-        Conn.Conn();
+        Conn.getConnection();
         Conn.User_Ams_Main();
         System.out.println("Click for Option");
         System.out.println("1. Enter for admin ");
@@ -61,8 +63,5 @@ public class Main
 
         }
      }
-
-
-
 
  }
