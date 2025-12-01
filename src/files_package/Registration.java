@@ -184,7 +184,7 @@ public class Registration extends Conn
 
     public static boolean userLogin() {
 
-        Recrod_var rr = new Recrod_var();
+     //   Recrod_var rr = new Recrod_var();
 
         System.out.println("Enter your username");
         String username = sc.nextLine();
@@ -226,7 +226,7 @@ public class Registration extends Conn
     public static  boolean adminLogin()
     {
 
-        Recrod_var rr = new Recrod_var();
+     //   Recrod_var rr = new Recrod_var();
 
         System.out.println("Enter your username");
 
@@ -234,6 +234,7 @@ public class Registration extends Conn
 
         System.out.println("Enter your password");
         String password = sc.nextLine();
+
         Boolean loginsuccess =false;
         try
         {

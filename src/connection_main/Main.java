@@ -59,30 +59,37 @@ public class Main {
                         case 2:
                             System.out.println("you are in admin login");
                             Registration.adminLogin();
-                            System.out.println("1 Enter  add flight");
-                            System.out.println("2 Enter delete flight");
-                            System.out.println("3 Update flight");
-                            System.out.println("4 View flight");
-                            int i1 = sc.nextInt();
-                            switch (i1) {
-                                case 1:
-                                    af.addFlight();
-                                    break;
 
-                                case 2:
-                                    df.deleteFlight();
-                                    break;
-                                case 3:
-                                    uf.updateFlight();
-                                    break;
-                                case 4:
-                                    vf.viewAllFlights();
-                                    break;
+                            if (Registration.adminLogin() == true) {
+                                System.out.println("1 Enter  add flight");
+                                System.out.println("2 Enter delete flight");
+                                System.out.println("3 Update flight");
+                                System.out.println("4 View flight");
+                                int i1 = sc.nextInt();
+                                switch (i1) {
+                                    case 1:
+                                        af.addFlight();
+                                        break;
 
+                                    case 2:
+                                        df.deleteFlight();
+                                        break;
+                                    case 3:
+                                        uf.updateFlight();
+                                        break;
+                                    case 4:
+                                        vf.viewAllFlights();
+                                        break;
+
+                                }
+                                break;
                             }
-                            break;
+                            else
+                            {
+                                System.out.println("something went wrong");
+                            }
                     }
-                    break;
+                           break;
                 case 2:
                     System.out.println("welcome to user panel");
                     System.out.println("1. Enter for user Registration");
@@ -96,20 +103,31 @@ public class Main {
                         case 2:
                             System.out.println("you are in user login panel'");
                             Registration.userLogin();
-                            System.out.println("1.Enter for TicketBooking");
-                            System.out.println("2.Enter for TicketCancel");
-                            int i1 = sc.nextInt();
-                            switch (i1) {
-                                case 1:
-                                    ttBooking.bookedTicket();
+                            if(Registration.userLogin()) {
+                                System.out.println("1.Enter for TicketBooking");
+                                System.out.println("2.Enter for TicketCancel");
+                                System.out.println("3. Enter for Exit");
 
-                                    break;
-                                case 2:
-                                    tc.ticketCancell();
+                                int i1 = sc.nextInt();
+                                switch (i1) {
+                                    case 1:
+                                        ttBooking.bookedTicket();
 
-                                    break;
+                                        break;
+                                    case 2:
+                                        tc.ticketCancell();
+
+                                        break;
+
+                                    case 3:
+                                        System.exit(0);
+                                        break;
+                                }
+                                break;
                             }
-                            break;
+                            else {
+                                System.out.println("something went wrong");
+                            }
                     }
                     break;
 
