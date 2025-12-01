@@ -24,6 +24,46 @@ public class Conn
         }
         return con;
     }
+    
+    
+    
+    public static void createAllTables() {
+    	
+    	
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ARS", "root", "Ishwar@777");
+			Statement st = con.createStatement();
+			
+			 String flightsTable = "CREATE TABLE IF NOT EXISTS flights ("
+	                    + "flight_id INT PRIMARY KEY AUTO_INCREMENT, "
+	                    + "airline_name VARCHAR(50), "
+	                    + "source VARCHAR(50), "
+	                    + "destination VARCHAR(50), "
+	                    + "departure_time VARCHAR(20), "
+	                    + "arrival_time VARCHAR(20), "
+	                    + "total_seats INT, "
+	                    + "available_seats INT, "
+	                    + "price DOUBLE"
+	                    + ")";
+
+	            st.execute(flightsTable);
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
     public static void bookDetail()
     {
         try{
