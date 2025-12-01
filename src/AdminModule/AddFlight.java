@@ -1,5 +1,4 @@
 package AdminModule;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
@@ -7,6 +6,7 @@ import java.util.Scanner;
 import connection_main.Conn;
 
 public class AddFlight {
+
 
     public void addFlight() {
         Scanner sc = new Scanner(System.in);
@@ -33,7 +33,7 @@ public class AddFlight {
         double price = sc.nextDouble();
 
         try {
-            Connection con = Conn.getConnection();
+            Connection con = Conn.getConn();
             String sql = "INSERT INTO flights (airline_name, source, destination, departure_time, arrival_time, total_seats, available_seats, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql);

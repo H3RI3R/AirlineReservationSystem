@@ -10,7 +10,7 @@ public class ViewFlight {
 
     public void viewAllFlights() {
         try {
-            Connection con = Conn.getConnection();
+            Connection con = Conn.getConn();
             String sql = "SELECT * FROM flights";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);

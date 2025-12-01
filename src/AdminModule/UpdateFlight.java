@@ -21,7 +21,7 @@ public class UpdateFlight {
         int choice = sc.nextInt();
 
         try {
-            Connection con = Conn.getConnection();
+            Connection con = Conn.getConn();
             PreparedStatement ps;
 
             if (choice == 1) {

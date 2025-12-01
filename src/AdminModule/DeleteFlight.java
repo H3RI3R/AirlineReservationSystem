@@ -15,7 +15,7 @@ public class DeleteFlight {
         int id = sc.nextInt();
 
         try {
-            Connection con = Conn.getConnection();
+            Connection con = Conn.getConn();
             String sql = "DELETE FROM flights WHERE flight_id=?";
             PreparedStatement ps = con.prepareStatement(sql);
 

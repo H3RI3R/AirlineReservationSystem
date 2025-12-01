@@ -1,363 +1,277 @@
 package files_package;
-import java.sql.Connection;
-<<<<<<< HEAD:src/Registration.java
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.util.Scanner;
-=======
-import java.util.Scanner;
-
 import connection_main.Conn;
->>>>>>> da5c19e5fc6dd671d666acb5fc5eb4038d5a0925:src/files_package/Registration.java
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
 
- public class Registration extends Conn {
-     static Scanner sc = new Scanner(System.in);
+public class Registration extends Conn
+{
+    static Scanner sc = new Scanner(System.in);
 
-     //  LinkedList linkedList = new LinkedList();
-     public static void userRecordRegister() {
-
-         System.out.println("Enter full_name");
-         String full_name = sc.nextLine();
-         while (!full_name.matches("[A-Za-z ]{3,50}")) {
-             System.out.println(" Invalid Name! Only letters allowed please Enter again:");
-             full_name = sc.nextLine();
-         }
-
-
-         System.out.println("Enter email");
-         String email = sc.nextLine();
-         while (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-             System.out.println("invalid email ");
-             System.out.println("please enter valid email");
-             email = sc.nextLine();
-
-         }
-
-
-<<<<<<< HEAD:src/Registration.java
-         System.out.println("Enter username");
-         String username = sc.nextLine();
-         while (!username.matches("^(?=.*[A-Za-z])[A-Za-z0-9_]{3,20}$")) {
-=======
-
-
-
-
-      System.out.println("Enter username");
-      String  username = sc.nextLine();
-      while(!username.matches("^(?=.*[A-Za-z])[A-Za-z0-9_]{3,20}$"))
-      {
-          System.out.println("invalid username please Enter again");
-          username = sc.nextLine();
-
-      }
-
-
-
-
-      System.out.println("Enter password");
-      String password = sc.nextLine();
-      while(!password.matches("^(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{6,20}$"))
-      {
-          System.out.println("password>6 :One letter capital one special character");
-          password=sc.nextLine();
-      }
-
-
-
-      System.out.println("Enter phone");
-      String phoneNo =  sc.nextLine();
-      while(!phoneNo.matches("[0-9]{10}"))
-      {
-          System.out.println("Invalid phone number");
-          phoneNo =sc.nextLine();
-      }
-
-      Recrod_var rr = new Recrod_var();
-      rr.setFull_name(full_name);
-      rr.setEmail(email);
-      rr.setUsername(username);
-      rr.setPassword(password);
-      rr.setPhoneNo(phoneNo);
-
-
-      try {
-          RoleType  SelectRoleType  =  RoleType.ADMIN;
-          Connection   con = Conn.getConnection();
-          String sql = "insert into ams_main(full_name,email,username,password,phoneNo,role) values(?,?,?,?,?,?);";
-          psmt = con.prepareStatement(sql);
-          psmt.setString(1,rr.getfull_name());
-          psmt.setString(2,rr.getEmail());
-          psmt.setString(3,rr.getUsername());
-          psmt.setString(4,rr.getPassword());
-          psmt.setString(5,rr.getPhoneNo());
-          psmt.setString(6,RoleType.ADMIN.name());
-          int row    = psmt.executeUpdate();
-
-
-          if(row>0)
-          {
-              System.out.println("inserted  successfully");
-          }
-          else
-          {
-              System.out.println("data not inserted");
-          }
-      }
-      catch (Exception e)
-      {
-          e.printStackTrace();
-      }
-  }
-
-    public static void recordRegister()
+    //  LinkedList linkedList = new LinkedList();
+    public static void userRecordRegister()
     {
 
         System.out.println("Enter full_name");
         String full_name = sc.nextLine();
-          while(!full_name.matches("[A-Za-z ]{3,50}"))
-          {
-              System.out.println(" Invalid Name! Only letters allowed please Enter again:");
-              full_name = sc.nextLine();
-          }
+        while(!full_name.matches("[A-Za-z ]{3,50}"))
+        {
+            System.out.println(" Invalid Name! Only letters allowed please Enter again:");
+            full_name = sc.nextLine();
+        }
 
 
 
         System.out.println("Enter email");
         String email = sc.nextLine();
-          while(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"))
-          {
-              System.out.println("invalid email ");
-              System.out.println("please enter valid email");
-              email =sc.nextLine();
+        while(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"))
+        {
+            System.out.println("invalid email ");
+            System.out.println("please enter valid email");
+            email =sc.nextLine();
 
-          }
-
-
-
-
-
-
+        }
         System.out.println("Enter username");
         String  username = sc.nextLine();
-         while(!username.matches("^(?=.*[A-Za-z])[A-Za-z0-9_]{3,20}$"))
-         {
->>>>>>> da5c19e5fc6dd671d666acb5fc5eb4038d5a0925:src/files_package/Registration.java
-             System.out.println("invalid username please Enter again");
-             username = sc.nextLine();
+        while(!username.matches("^(?=.*[A-Za-z])[A-Za-z0-9_]{3,20}$"))
+        {
+            System.out.println("invalid username please Enter again");
+            username = sc.nextLine();
 
-         }
-
-
-<<<<<<< HEAD:src/Registration.java
-         System.out.println("Enter password");
-         String password = sc.nextLine();
-         while (!password.matches("^(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{6,20}$")) {
-             System.out.println("password>6 :One letter capital one special character");
-             password = sc.nextLine();
-         }
+        }
 
 
-         System.out.println("Enter phone");
-         String phoneNo = sc.nextLine();
-         while (!phoneNo.matches("[0-9]{10}")) {
-             System.out.println("Invalid phone number");
-             phoneNo = sc.nextLine();
-         }
-
-         Recrod_var rr = new Recrod_var();
-         rr.setFull_name(full_name);
-         rr.setEmail(email);
-         rr.setUsername(username);
-         rr.setPassword(password);
-         rr.setPhoneNo(phoneNo);
-
-
-         try {
-             RoleType SelectRoleType = RoleType.ADMIN;
-             Connection con = Conn.Conn();
-             String sql = "insert into ams_main(full_name,email,username,password,phoneNo,role) values(?,?,?,?,?,?);";
-             psmt = con.prepareStatement(sql);
-             psmt.setString(1, rr.getfull_name());
-             psmt.setString(2, rr.getEmail());
-             psmt.setString(3, rr.getUsername());
-             psmt.setString(4, rr.getPassword());
-             psmt.setString(5, rr.getPhoneNo());
-             psmt.setString(6, RoleType.USER.name());
-             int row = psmt.executeUpdate();
-
-
-             if (row > 0) {
-                 System.out.println("inserted  successfully");
-             } else {
-                 System.out.println("data not inserted");
-             }
-         } catch (Exception e) {
-             e.printStackTrace();
-=======
 
 
         System.out.println("Enter password");
-          String password = sc.nextLine();
-          while(!password.matches("^(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{6,20}$"))
-          {
-              System.out.println("password>6 :One letter capital one special character");
-              password=sc.nextLine();
-          }
+        String password = sc.nextLine();
+        while(!password.matches("^(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{6,20}$"))
+        {
+            System.out.println("password>6 :One letter capital one special character");
+            password=sc.nextLine();
+        }
+        System.out.println("Enter phone");
+        String phoneNo =  sc.nextLine();
+        while(!phoneNo.matches("[0-9]{10}"))
+        {
+            System.out.println("Invalid phone number");
+            phoneNo =sc.nextLine();
+        }
+
+        Recrod_var rr = new Recrod_var();
+        rr.setFull_name(full_name);
+        rr.setEmail(email);
+        rr.setUsername(username);
+        rr.setPassword(password);
+        rr.setPhoneNo(phoneNo);
+
+
+        try {
+            RoleType  SelerctRoleType  =  RoleType.ADMIN;
+            Connection   con = Conn.getConn();
+            String sql = "insert into ams_main(full_name,email,username,password,phoneNo,role) values(?,?,?,?,?,?);";
+            psmt = con.prepareStatement(sql);
+            psmt.setString(1,rr.getfull_name());
+            psmt.setString(2,rr.getEmail());
+            psmt.setString(3,rr.getUsername());
+            psmt.setString(4,rr.getPassword());
+            psmt.setString(5,rr.getPhoneNo());
+            psmt.setString(6,RoleType.USER.name());
+            int row    = psmt.executeUpdate();
+
+            if(row>0)
+            {
+                System.out.println("inserted  successfully");
+            }
+            else
+            {
+                System.out.println("data not inserted");
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
+    }
+    public static void adminRecordRegister()
+    {
+
+        System.out.println("Enter full_name");
+        String full_name = sc.nextLine();
+        while(!full_name.matches("[A-Za-z ]{3,50}"))
+        {
+            System.out.println(" Invalid Name! Only letters allowed please Enter again:");
+            full_name = sc.nextLine();
+        }
+
+
+
+        System.out.println("Enter email");
+        String email = sc.nextLine();
+        while(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"))
+        {
+            System.out.println("invalid email ");
+            System.out.println("please enter valid email");
+            email =sc.nextLine();
+
+        }
+
+        System.out.println("Enter username");
+        String  username = sc.nextLine();
+        while(!username.matches("^(?=.*[A-Za-z])[A-Za-z0-9_]{3,20}$"))
+        {
+            System.out.println("invalid username please Enter again");
+            username = sc.nextLine();
+
+        }
+
+        System.out.println("Enter password");
+        String password = sc.nextLine();
+        while(!password.matches("^(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{6,20}$"))
+        {
+            System.out.println("password>6 :One letter capital one special character");
+            password=sc.nextLine();
+        }
 
 
 
         System.out.println("Enter phone");
-          String phoneNo =  sc.nextLine();
-            while(!phoneNo.matches("[0-9]{10}"))
-            {
-                System.out.println("Invalid phone number");
-                phoneNo =sc.nextLine();
-            }
+        String phoneNo =  sc.nextLine();
+        while(!phoneNo.matches("[0-9]{10}"))
+        {
+            System.out.println("Invalid phone number");
+            phoneNo =sc.nextLine();
+        }
 
-                Recrod_var rr = new Recrod_var();
-                rr.setFull_name(full_name);
-                rr.setEmail(email);
-                rr.setUsername(username);
-                rr.setPassword(password);
-                rr.setPhoneNo(phoneNo);
+        Recrod_var rr = new Recrod_var();
+        rr.setFull_name(full_name);
+        rr.setEmail(email);
+        rr.setUsername(username);
+        rr.setPassword(password);
+        rr.setPhoneNo(phoneNo);
 
 
         try {
-                RoleType  SelerctRoleType  =  RoleType.ADMIN;
-            Connection   con = Conn.getConnection();
-             String sql = "insert into ams_main(full_name,email,username,password,phoneNo,role) values(?,?,?,?,?,?);";
-                psmt = con.prepareStatement(sql);
-                psmt.setString(1,rr.getfull_name());
-                psmt.setString(2,rr.getEmail());
-                psmt.setString(3,rr.getUsername());
-                psmt.setString(4,rr.getPassword());
-                psmt.setString(5,rr.getPhoneNo());
-                psmt.setString(6,RoleType.ADMIN.name());
-                int row    = psmt.executeUpdate();
+            RoleType  SelerctRoleType  =  RoleType.ADMIN;
+            Connection   con = Conn.getConn();
+            String sql = "insert into ams_main(full_name,email,username,password,phoneNo,role) values(?,?,?,?,?,?);";
+            psmt = con.prepareStatement(sql);
+            psmt.setString(1,rr.getfull_name());
+            psmt.setString(2,rr.getEmail());
+            psmt.setString(3,rr.getUsername());
+            psmt.setString(4,rr.getPassword());
+            psmt.setString(5,rr.getPhoneNo());
+            psmt.setString(6,RoleType.ADMIN.name());
+            int row    = psmt.executeUpdate();
+            if(row>0)
+            {
+                System.out.println("inserted  successfully");
+            }
+            else
+            {
+                System.out.println("data not inserted");
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
+    }
 
-                if(row>0)
-                {
-                    System.out.println("inserted  successfully");
-                }
+    public static boolean userLogin() {
+
+        Recrod_var rr = new Recrod_var();
+
+        System.out.println("Enter your username");
+        String username = sc.nextLine();
+
+        System.out.println("Enter your password");
+        String password = sc.nextLine();
+        Boolean loginsuccess = false;
+
+        try {
+
+                Connection con =Conn.getConn();
+            String sql = "select  is_active from ams_main where username=? and password= ? and role='user'";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                boolean isActive = rs.getBoolean("is_active");
+                if (isActive) {
+                    System.out.println("login successfull");
+                    loginsuccess = true;
+
+                   }
                 else
                 {
-                    System.out.println("data not inserted");
+                    System.out.println("something went wrong");
                 }
->>>>>>> da5c19e5fc6dd671d666acb5fc5eb4038d5a0925:src/files_package/Registration.java
-         }
-     }
 
-     public static void adminRecordRegister() {
-
-         System.out.println("Enter full_name");
-         String full_name = sc.nextLine();
-         while (!full_name.matches("[A-Za-z ]{3,50}")) {
-             System.out.println(" Invalid Name! Only letters allowed please Enter again:");
-             full_name = sc.nextLine();
-         }
+                }
 
 
-         System.out.println("Enter email");
-         String email = sc.nextLine();
-         while (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-             System.out.println("invalid email ");
-             System.out.println("please enter valid email");
-             email = sc.nextLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return loginsuccess;
+    }
 
-         }
+    public static  boolean adminLogin()
+    {
 
+        Recrod_var rr = new Recrod_var();
 
-         System.out.println("Enter username");
-         String username = sc.nextLine();
-         while (!username.matches("^(?=.*[A-Za-z])[A-Za-z0-9_]{3,20}$")) {
-             System.out.println("invalid username please Enter again");
-             username = sc.nextLine();
+        System.out.println("Enter your username");
 
-         }
+        String username    =  sc.nextLine();
 
+        System.out.println("Enter your password");
+        String password = sc.nextLine();
+        Boolean loginsuccess =false;
+        try
+        {
+            Connection con =Conn.getConn();
+            String sql ="select username,is_active from ams_main where username=? and password= ? and role='admin'";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,username);
+            ps.setString(2,password);
+            ResultSet rs   = ps.executeQuery();
+            if(rs.next())
+            {
+                boolean  isActive= rs.getBoolean("is_active");
+                if(isActive)
+                {
+                    System.out.println("login page");
+                    System.out.println("login successfull");
+                    loginsuccess=true;
 
-         System.out.println("Enter password");
-         String password = sc.nextLine();
-         while (!password.matches("^(?=.*[A-Z])(?=.*[@#$%^&+=!_]).{6,20}$")) {
-             System.out.println("password>6 :One letter capital one special character");
-             password = sc.nextLine();
-         }
-         System.out.println("Enter phone");
-         String phoneNo = sc.nextLine();
-         while (!phoneNo.matches("[0-9]{10}")) {
-             System.out.println("Invalid phone number");
-             phoneNo = sc.nextLine();
-         }
+                }
 
-         Recrod_var rr = new Recrod_var();
-         rr.setFull_name(full_name);
-         rr.setEmail(email);
-         rr.setUsername(username);
-         rr.setPassword(password);
-         rr.setPhoneNo(phoneNo);
+            }
 
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("user and password not eqqual");
+            return false;
+        }
+        return loginsuccess;
 
-         try {
-             RoleType SelerctRoleType = RoleType.ADMIN;
-             Connection con = Conn.Conn();
-             String sql = "insert into ams_main(full_name,email,username,password,phoneNo,role) values(?,?,?,?,?,?);";
-             psmt = con.prepareStatement(sql);
-             psmt.setString(1, rr.getfull_name());
-             psmt.setString(2, rr.getEmail());
-             psmt.setString(3, rr.getUsername());
-             psmt.setString(4, rr.getPassword());
-             psmt.setString(5, rr.getPhoneNo());
-             psmt.setString(6, RoleType.ADMIN.name());
-             int row = psmt.executeUpdate();
+    }
 
 
-             if (row > 0) {
-                 System.out.println("inserted  successfully");
-             } else {
-                 System.out.println("data not inserted");
-             }
-         } catch (Exception e) {
-             e.printStackTrace();
-         }
-     }
+    public enum RoleType
+    {
+        ADMIN,
+        USER
+    }
 
-     public enum RoleType {
-         ADMIN,
-         USER
-     }
-
-
-     public static boolean userRecordLogin()
-     {
-
-         System.out.println("Enter  username");
-         String username = sc.nextLine();
-
-         System.out.println("Enter password");
-         String password = sc.nextLine();
-
-         try {
-             Connection con = Conn.Conn();
-             String sql = "select * from Registration where username =? and password=? and is_active=1";
-             PreparedStatement ps = con.prepareStatement(sql);
-             ps.setString(1, username);
-             ps.setString(2, password);
-             int row = ps.executeUpdate();
-             if (row == 1) {
-                 System.out.println("login successfully");
-                 return true;
-             } else {
-                 System.out.println("invalid user & password");
-                 return false;
-             }
-         } catch (Exception e) {
-             e.printStackTrace();
-
-         }
-      return  false;
-
-     }
-
- }
+}
